@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/auth/Signup";
 import Login from "./pages/auth/Login";
 import { Navbar } from "./components/navbar";
+import Summarizer from "./pages/Summarizer";
 
 const App = () => {
 	return (
@@ -11,6 +12,7 @@ const App = () => {
 				<Navbar />
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="/summarize" element={<Summarizer />} />
 					<Route path="/signup" element={<Signup />} />
 					<Route path="/login" element={<Login />} />
 				</Routes>

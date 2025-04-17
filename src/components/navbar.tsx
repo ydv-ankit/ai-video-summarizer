@@ -62,7 +62,9 @@ export function Navbar() {
 					</div>
 				) : (
 					<Link to={"/login"}>
-						<Button className="cursor-pointer not-hover:border">Login</Button>
+						<Button className="cursor-pointer not-hover:border bg-cyan-500 hover:bg-cyan-600">
+							Login
+						</Button>
 					</Link>
 				)}
 			</div>
