@@ -11,9 +11,16 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
+import useAxios from "@/hooks/useAxios";
+import { env } from "@/lib/env";
 
 export function Navbar() {
-	const user = useAuthStore((state) => state.user);
+	const { user, removeUser } = useAuthStore((state) => state);
+	const { makeAxiosRequest } = useAxios();
+	const handleLogout = async () => {
+		makeAxiosRequest(`${env.SERVER_URL}/logout`, "POST");
+		removeUser();
+	};
 
 	return (
 		<nav className="relative w-full flex items-center justify-around p-2 border-b">
@@ -23,10 +30,10 @@ export function Navbar() {
 			</div>
 			<div className="flex items-center justify-center space-x-2">
 				<Link to={"/"}>
-					<div className="text-neutral-500">Home</div>
+					<div className="text-neutral-500 hover:text-neutral-800">Home</div>
 				</Link>
 				<Link to={"/summarize"}>
-					<div className="text-neutral-500">Summarize</div>
+					<div className="text-neutral-500 hover:text-neutral-800">Summarize</div>
 				</Link>
 				{user ? (
 					<div>
@@ -46,7 +53,7 @@ export function Navbar() {
 								</DropdownMenuLabel>
 								<DropdownMenuSeparator />
 								<DropdownMenuGroup>
-									<DropdownMenuItem className="cursor-pointer" onClick={() => {}}>
+									<DropdownMenuItem className="cursor-pointer" onClick={handleLogout}>
 										Logout
 									</DropdownMenuItem>
 								</DropdownMenuGroup>

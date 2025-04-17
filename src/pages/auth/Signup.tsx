@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -13,6 +13,8 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import useAxios from "@/hooks/useAxios";
+import { env } from "@/lib/env";
 
 const formSchema = z.object({
 	email: z.string().min(2),
@@ -20,6 +22,9 @@ const formSchema = z.object({
 });
 
 const Signup = () => {
+	const { isLoading, error, makeAxiosRequest } = useAxios();
+	const navigate = useNavigate();
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -28,11 +33,12 @@ const Signup = () => {
 		},
 	});
 
-	// 2. Define a submit handler.
-	function onSubmit(values: z.infer<typeof formSchema>) {
-		// Do something with the form values.
-		// ✅ This will be type-safe and validated.
-		console.log(values);
+	async function onSubmit(values: z.infer<typeof formSchema>) {
+		const data = await makeAxiosRequest(`${env.SERVER_URL}/signup`, "POST", {}, values);
+		if (data) {
+			console.log(data);
+			navigate("/login");
+		}
 	}
 
 	return (
@@ -47,6 +53,7 @@ const Signup = () => {
 						<h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
 							Create your account
 						</h1>
+						{error && <div className="text-red-500/80 italic">{error}</div>}
 						<Form {...form}>
 							<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
 								<FormField
@@ -85,7 +92,7 @@ const Signup = () => {
 										</FormItem>
 									)}
 								/>
-								<Button type="submit" className="cursor-pointer">
+								<Button type="submit" className="cursor-pointer" disabled={isLoading}>
 									Sign Up
 								</Button>
 							</form>
