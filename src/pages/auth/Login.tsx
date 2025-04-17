@@ -38,7 +38,7 @@ const Login = () => {
 	async function onSubmit(values: z.infer<typeof formSchema>) {
 		const data = await makeAxiosRequest(`${env.SERVER_URL}/login`, "POST", {}, values);
 		console.log(data);
-		updateUser({ id: data.id, email: data.email });
+		updateUser({ id: data.id, email: data.email, tokens: data.tokens });
 		navigate("/");
 	}
 

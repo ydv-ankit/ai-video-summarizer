@@ -59,9 +59,12 @@ const Uploader = ({
 					</Button>
 				) : (
 					<Button
-						className="w-full bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg py-2 text-sm transition-colors duration-300"
+						className="w-full bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg py-2 text-sm transition-colors duration-300 cursor-pointer"
 						onClick={handleSummarizeVideo}>
-						Summarize
+						<span>Summarize</span>
+						{"( 1"}
+						<img src="coin.png" alt="token" className="w-4 h-4" />
+						{")"}
 					</Button>
 				)}
 			</div>

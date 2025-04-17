@@ -3,6 +3,7 @@ import { create } from "zustand";
 type User = {
 	id: string;
 	email: string;
+	tokens: number;
 };
 
 type AuthState = {
