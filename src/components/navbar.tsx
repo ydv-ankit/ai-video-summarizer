@@ -21,7 +21,6 @@ export function Navbar() {
 		await makeAxiosRequest(`${env.SERVER_URL}/logout`, "POST");
 		removeUser();
 	};
-	console.log(user?.tokens);
 
 	return (
 		<nav className="relative w-full flex items-center justify-around p-2 border-b">
@@ -31,12 +30,12 @@ export function Navbar() {
 			</div>
 			<div className="flex items-center justify-center space-x-2">
 				<Link to={"/"}>
-					<div className="text-neutral-500 hover:text-neutral-800 hover:border rounded-md p-1 mx-2">
+					<div className="text-lg cursor-pointer text-neutral-500 hover:text-neutral-800 hover:underline rounded-md p-1 mx-2">
 						Home
 					</div>
 				</Link>
 				<Link to={"/summarize"}>
-					<div className="text-neutral-500 hover:text-neutral-800 hover:border rounded-md p-1">
+					<div className="text-lg cursor-pointer text-neutral-500 hover:text-neutral-800 hover:underline rounded-md p-1">
 						Summarize
 					</div>
 				</Link>
