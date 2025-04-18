@@ -10,9 +10,9 @@ import {
 	DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Button } from "./ui/button";
 import useAxios from "@/hooks/useAxios";
 import { env } from "@/lib/env";
+import { ShinyButton } from "@/components/magicui/shiny-button";
 
 export function Navbar() {
 	const { user, removeUser } = useAuthStore((state) => state);
@@ -72,9 +72,7 @@ export function Navbar() {
 					</>
 				) : (
 					<Link to={"/login"}>
-						<Button className="cursor-pointer not-hover:border bg-cyan-500 hover:bg-cyan-600">
-							Login
-						</Button>
+						<ShinyButton className="cursor-pointer">Login</ShinyButton>
 					</Link>
 				)}
 			</div>
