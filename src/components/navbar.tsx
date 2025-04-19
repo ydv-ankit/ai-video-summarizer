@@ -19,21 +19,17 @@ export function Navbar() {
 	};
 
 	return (
-		<nav className="relative w-full flex items-center justify-around p-2 border-b">
+		<nav className="relative w-full flex items-center justify-around p-2 bg-gradient-to-r from-indigo-700 via-purple-600 to-pink-500 text-white shadow-md">
 			<div className="flex items-center justify-center gap-2">
 				<img src="icon.ico" alt="logo" className="w-10 h-10" />
 				<span className="font-semibold text-xl">QuickVideo</span>
 			</div>
 			<div className="flex items-center justify-center space-x-2">
 				<Link to={"/"}>
-					<div className="text-lg cursor-pointer text-neutral-500 hover:text-neutral-800 hover:underline rounded-md p-1 mx-2">
-						Home
-					</div>
+					<div className="text-lg cursor-pointer hover:underline rounded-md p-1 mx-2">Home</div>
 				</Link>
 				<Link to={"/summarize"}>
-					<div className="text-lg cursor-pointer text-neutral-500 hover:text-neutral-800 hover:underline rounded-md p-1">
-						Summarize
-					</div>
+					<div className="text-lg cursor-pointer hover:underline rounded-md p-1">Summarize</div>
 				</Link>
 				{user ? (
 					<>
@@ -68,7 +64,7 @@ export function Navbar() {
 					</>
 				) : (
 					<Link to={"/login"}>
-						<ShinyButton className="cursor-pointer">Login</ShinyButton>
+						<ShinyButton className="cursor-pointer text-white">Login</ShinyButton>
 					</Link>
 				)}
 			</div>

@@ -32,6 +32,14 @@ const Summarizer = () => {
 		setData(res.data.data);
 	};
 
+	if (!user) {
+		return (
+			<div className="flex items-center justify-center h-screen w-full bg-gradient-to-br from-indigo-600 via-purple-500 to-pink-500">
+				<div className="text-white text-2xl">Please log in to access this page.</div>
+			</div>
+		);
+	}
+
 	return (
 		<div>
 			{data ? (
