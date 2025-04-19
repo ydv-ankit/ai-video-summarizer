@@ -34,9 +34,8 @@ const Signup = () => {
 	});
 
 	async function onSubmit(values: z.infer<typeof formSchema>) {
-		const data = await makeAxiosRequest(`${env.SERVER_URL}/signup`, "POST", {}, values);
-		if (data) {
-			console.log(data);
+		const res = await makeAxiosRequest(`${env.SERVER_URL}/signup`, "POST", {}, values);
+		if (res?.status === 201) {
 			navigate("/login");
 		}
 	}

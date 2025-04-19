@@ -10,15 +10,11 @@ import {
 	DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import useAxios from "@/hooks/useAxios";
-import { env } from "@/lib/env";
 import { ShinyButton } from "@/components/magicui/shiny-button";
 
 export function Navbar() {
 	const { user, removeUser } = useAuthStore((state) => state);
-	const { makeAxiosRequest } = useAxios();
 	const handleLogout = async () => {
-		await makeAxiosRequest(`${env.SERVER_URL}/logout`, "POST");
 		removeUser();
 	};
 

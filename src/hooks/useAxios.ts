@@ -23,7 +23,8 @@ const useAxios = () => {
 				data: payload,
 				withCredentials: true,
 			});
-			return response.data;
+
+			return response;
 		} catch (error: any) {
 			console.log(error);
 			setError(
