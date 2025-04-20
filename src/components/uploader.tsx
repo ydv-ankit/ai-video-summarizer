@@ -36,6 +36,9 @@ const Uploader = ({
 						<div className="flex flex-col items-center text-center space-y-2">
 							<p className="text-sm text-cyan-900">Drag and drop files here, or click to select</p>
 							<LucideFileInput className="text-cyan-600" />
+							<span className="text-sm text-cyan-800">
+								{"("}Max. 100MB{")"}
+							</span>
 						</div>
 					)}
 				</div>

@@ -28,8 +28,8 @@ const useAxios = () => {
 		} catch (error: any) {
 			console.log(error);
 			setError(
-				error.response.data.msg
-					? error.response.data.msg
+				error?.response?.data?.msg
+					? error?.response?.data?.msg
 					: "Something went wrong. Please try again."
 			);
 		} finally {

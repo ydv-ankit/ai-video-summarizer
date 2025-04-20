@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import useAxios from "@/hooks/useAxios";
 import { env } from "@/lib/env";
 import useAuthStore from "@/store/zustand";
+import { useEffect } from "react";
 
 const formSchema = z.object({
 	email: z.string(),
@@ -46,6 +47,7 @@ const Login = () => {
 		});
 		navigate("/");
 	}
+	useEffect(() => {}, [error]);
 
 	return (
 		<section className="bg-gray-50 dark:bg-gray-900">
